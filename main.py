@@ -44,7 +44,8 @@ def index():
             <title>Some HTML in here</title>
         </head>
         <body>
-            <h1>Look ma! HTML!</h1>
+            <h1>こんにちは！Googleへのリンクを示します。</h1>
+            <a href="https://www.google.co.jp/" title="Googleへ">ここを押してください</a>
         </body>
     </html>
     """
