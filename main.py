@@ -6,6 +6,8 @@ import random  # randomライブラリを追加
 
 from fastapi.responses import HTMLResponse #インポート
 
+from pydantic import BaseModel
+
 app = FastAPI()
 
 
@@ -53,11 +55,13 @@ def index():
 async def new_naming(present):
     return {"response": f"サーバです。メリークリスマス！ {present}ありがとう。お返しはキャンディーです。"}
 
+class Payment(BaseModel):
+    my_wallet: int
+    merchandise_price: int
+
 @app.post("/pay")
-    amount_given: float
-    price: float
 async def calculate_change(payment: Payment):
-    change = payment.amount_given - payment.price
+    change = payment.my_wallet - payment.merchandise_price
     if change < 0:
         return {"response": "金額が不足しています。"}
-    return {"response": f"代金を頂きました。お釣りは{change}円です。"}
+    return {"response": f"円を頂きました。お釣りは{change}円です。"}
