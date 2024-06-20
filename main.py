@@ -64,4 +64,4 @@ async def calculate_change(payment: Payment):
     change = payment.my_wallet - payment.merchandise_price
     if change < 0:
         return {"response": "金額が不足しています。"}
-    return {"response": f"円を頂きました。お釣りは{change}円です。"}
+    return {"response": f"お釣りは{change}円です。"}
